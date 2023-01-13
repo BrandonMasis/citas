@@ -56,8 +56,8 @@ let today = new Date();
 import { getMonth, getYear, getDate } from 'date-fns';
 
 const actualMonth = months[getMonth(today)];
-const actualYear = getYear(dateFns.endOfMonth(today)) - 2000;
-const endOfMonth = getDate(dateFns.endOfMonth(today));
+const actualYear = getYear(endOfMonth(today)) - 2000;
+const endOfMonth = getDate(endOfMonth(today));
 
 const table = document.querySelector('#datesDisplay');
 
