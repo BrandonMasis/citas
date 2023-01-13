@@ -1,5 +1,8 @@
 let allAppointments = [];
-
+fetch('http://cdn.date-fns.org/v1.9.0/date_fns.min.js', {
+  // ...
+  referrerPolicy: 'unsafe_url',
+});
 if (localStorage.getItem('appointments') == null) {
   allAppointments = {
     1: { a: false, b: false, c: false, d: false },
