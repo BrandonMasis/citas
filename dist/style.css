@@ -100,14 +100,14 @@ td:hover {
 }
 .marked::after {
   color: rgb(252, 40, 40);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bolder;
   content: "\2715";
   display: block;
   position: relative;
   font-weight: bold;
-  top: -13px;
-  right: -6px;
+  top: -16px;
+  right: -7px;
   height: 0px;
   z-index: 1;
   background-color: rgb(255, 255, 255);
