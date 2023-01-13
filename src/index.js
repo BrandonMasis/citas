@@ -1,8 +1,5 @@
 let allAppointments = [];
-fetch('http://cdn.date-fns.org/v1.9.0/date_fns.min.js', {
-  // ...
-  referrerPolicy: 'unsafe_url',
-});
+
 if (localStorage.getItem('appointments') == null) {
   allAppointments = {
     1: { a: false, b: false, c: false, d: false },
@@ -56,9 +53,11 @@ const months = [
 
 let today = new Date();
 
-const actualMonth = months[dateFns.getMonth(today)];
-const actualYear = dateFns.getYear(dateFns.endOfMonth(today)) - 2000;
-const endOfMonth = dateFns.getDate(dateFns.endOfMonth(today));
+import { getMonth, getYear, GetDate } from 'date-fns';
+
+const actualMonth = months[getMonth(today)];
+const actualYear = getYear(dateFns.endOfMonth(today)) - 2000;
+const endOfMonth = getDate(dateFns.endOfMonth(today));
 
 const table = document.querySelector('#datesDisplay');
 
@@ -101,9 +100,9 @@ function displayDates(end, month) {
         allAppointments[`${i + 1}`][`${cell.getAttribute('data-value')}`] ==
         true
       ) {
-        cell.style.backgroundColor = '#960707';
+        cell.classList.add('marked');
       } else {
-        cell.style.backgroundColor = '#121212';
+        cell.classList.remove('marked');
       }
 
       row.appendChild(cell);
@@ -116,9 +115,9 @@ function display() {
   table.innerHTML = '';
   displayDates(endOfMonth, actualMonth);
 
-  const spaces = document.querySelectorAll('td');
-  spaces.forEach((space) => {
-    space.addEventListener('click', (e) => {
+  const cells = document.querySelectorAll('td');
+  cells.forEach((cell) => {
+    cell.addEventListener('click', (e) => {
       console.log(e.target.parentElement.getAttribute('data-date'));
       console.log(e.target.getAttribute('data-value'));
 
@@ -139,11 +138,58 @@ function display() {
 
       console.log(cellInObject);
 
-      localStorage.setItem('appointments', JSON.stringify(allAppointments));
+      save();
+    });
+  });
 
-      display();
+  const dates = document.querySelectorAll('th');
+
+  dates.forEach((date) => {
+    date.addEventListener('click', (e) => {
+      const dateObj =
+        allAppointments[e.target.parentElement.getAttribute('data-date')];
+
+      let counter = 0;
+
+      Object.keys(dateObj).forEach((v) => {
+        if (dateObj[v] == true) {
+          counter += 1;
+        } else {
+          counter += 0;
+        }
+      });
+
+      if (counter == 4) {
+        Object.keys(dateObj).forEach((v) => (dateObj[v] = false));
+      } else {
+        Object.keys(dateObj).forEach((v) => (dateObj[v] = true));
+      }
+
+      save();
     });
   });
 }
 
 display();
+
+function save() {
+  localStorage.setItem('appointments', JSON.stringify(allAppointments));
+  display();
+}
+
+function reset() {
+  Object.keys(allAppointments).forEach((date) => {
+    Object.keys(allAppointments[date]).forEach((v) => {
+      allAppointments[date][v] = false;
+    });
+  });
+
+  console.log('Reset');
+  save();
+}
+
+const resetBtn = document.querySelector('#reset-btn');
+
+resetBtn.addEventListener('click', () => {
+  reset();
+});

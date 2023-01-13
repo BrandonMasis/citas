@@ -63,6 +63,7 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 body {
@@ -116,5 +117,32 @@ td {
 }
 
 td:hover {
-  background-color: hsl(0deg, 0%, 15%);
-} /*# sourceMappingURL=styles.css.map *//*# sourceMappingURL=styles.css.map */
+  background-color: rgba(38, 38, 38, 0.699);
+}
+
+.marked {
+  background-color: rgb(189, 12, 12);
+  color: #ffffff;
+}
+.marked:hover {
+  background-color: rgb(129, 3, 3);
+}
+
+#reset-btn {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+  border-radius: 2px;
+  background-color: #494949;
+  color: white;
+  border-style: none;
+  font-family: "Yantramanav", sans-serif;
+  gap: 10px;
+}
+#reset-btn i {
+  font-size: 8px;
+}
+#reset-btn:hover {
+  background-color: #575555;
+}/*# sourceMappingURL=styles.css.map */

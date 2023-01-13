@@ -63,6 +63,8 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  flex-direction: column;
 }
 
 body {
@@ -113,6 +115,37 @@ td {
   font-weight: 300;
   padding: 2px 4px;
 }
+
 td:hover {
-  background-color: hsl(0deg, 0%, 15%);
-}/*# sourceMappingURL=styles.css.map */
+  background-color: rgba(38, 38, 38, 0.699);
+}
+
+.marked{
+  background-color: rgb(189, 12, 12);
+  color: #ffffff;
+  &:hover{
+   background-color: rgb(129, 3, 3);
+
+  }
+}
+
+#reset-btn{
+  width: fit-content;
+  height: fit-content;
+  padding: .5rem 1rem;
+  font-size: 12px;
+  border-radius: 2px;
+  background-color: #494949;
+  color: white;
+  border-style: none;
+  font-family: "Yantramanav", sans-serif;
+  gap: 10px;
+
+  i{
+    font-size: 8px;
+  }
+
+  &:hover{
+    background-color: #575555;
+  }
+}
