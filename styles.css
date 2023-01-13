@@ -87,12 +87,12 @@ table, th, td {
 
 th {
   width: 3rem;
-  border: 0.1px solid rgba(248, 248, 248, 0.596);
+  border: 1px solid rgba(248, 248, 248, 0.596);
   border-left: none;
 }
 
 td {
-  border: 0.1px solid rgba(255, 255, 255, 0.637);
+  border: 1px solid rgba(255, 255, 255, 0.637);
 }
 
 tr {
