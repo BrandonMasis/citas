@@ -87,12 +87,12 @@ table, th, td {
 
 th {
   width: 3rem;
-  border: 1px solid rgba(248, 248, 248, 0.596);
+  border: .3px solid rgba(248, 248, 248, 0.253);
   border-left: none;
 }
 
 td {
-  border: 1px solid rgba(255, 255, 255, 0.637);
+  border: .3px solid rgba(255, 255, 255, 0.322);
 }
 
 tr {
@@ -124,13 +124,13 @@ td:hover {
 }
 
 .marked {
-  color: #b3b3b3;
+  color: #b3b3b3ec;
 }
 .marked::after {
   color: rgba(252, 32, 32, 0.904);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bolder;
-  content: "✖";
+  content: "\2715";
   display: block;
   position: relative;
   top: -9px;
