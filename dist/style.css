@@ -141,7 +141,7 @@ td:hover {
   display: block;
   position: relative;
   font-weight: bold;
-  top: 4px;
+  top: -9px;
   right: -6px;
   height: 0px;
   z-index: 1;
