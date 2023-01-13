@@ -1,4 +1,25 @@
+import { getMonth, getYear, getDate, endOfMonth } from 'date-fns';
 let allAppointments = [];
+
+const months = [
+  'ene.',
+  'feb.',
+  'mar.',
+  'abr.',
+  'mayo.',
+  'jun.',
+  'jul.',
+  'oct.',
+  'nov.',
+  'dec.',
+];
+
+const today = new Date();
+const actualMonth = months[getMonth(today)];
+const actualYear = getYear(endOfMonth(today)) - 2000;
+const endActualMonth = getDate(endOfMonth(today));
+const table = document.querySelector('#datesDisplay');
+const resetBtn = document.querySelector('#reset-btn');
 
 if (localStorage.getItem('appointments') == null) {
   allAppointments = {
@@ -37,29 +58,6 @@ if (localStorage.getItem('appointments') == null) {
 } else {
   allAppointments = JSON.parse(localStorage.getItem('appointments'));
 }
-
-const months = [
-  'ene.',
-  'feb.',
-  'mar.',
-  'abr.',
-  'mayo.',
-  'jun.',
-  'jul.',
-  'oct.',
-  'nov.',
-  'dec.',
-];
-
-let today = new Date();
-
-import { getMonth, getYear, getDate } from 'date-fns';
-
-const actualMonth = months[getMonth(today)];
-const actualYear = getYear(endOfMonth(today)) - 2000;
-const endOfMonth = getDate(endOfMonth(today));
-
-const table = document.querySelector('#datesDisplay');
 
 function displayDates(end, month) {
   for (let i = 0; i < end; i++) {
@@ -113,7 +111,7 @@ function displayDates(end, month) {
 
 function display() {
   table.innerHTML = '';
-  displayDates(endOfMonth, actualMonth);
+  displayDates(endActualMonth, actualMonth);
 
   const cells = document.querySelectorAll('td');
   cells.forEach((cell) => {
@@ -136,14 +134,11 @@ function display() {
         ] = true;
       }
 
-      console.log(cellInObject);
-
       save();
     });
   });
 
   const dates = document.querySelectorAll('th');
-
   dates.forEach((date) => {
     date.addEventListener('click', (e) => {
       const dateObj =
@@ -170,13 +165,6 @@ function display() {
   });
 }
 
-display();
-
-function save() {
-  localStorage.setItem('appointments', JSON.stringify(allAppointments));
-  display();
-}
-
 function reset() {
   Object.keys(allAppointments).forEach((date) => {
     Object.keys(allAppointments[date]).forEach((v) => {
@@ -184,12 +172,16 @@ function reset() {
     });
   });
 
-  console.log('Reset');
   save();
 }
-
-const resetBtn = document.querySelector('#reset-btn');
 
 resetBtn.addEventListener('click', () => {
   reset();
 });
+
+display();
+
+function save() {
+  localStorage.setItem('appointments', JSON.stringify(allAppointments));
+  display();
+}
