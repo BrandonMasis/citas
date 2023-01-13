@@ -121,12 +121,27 @@ td:hover {
 }
 
 .marked{
-  background-color: rgb(189, 12, 12);
-  color: #ffffff;
-  &:hover{
-   background-color: rgb(129, 3, 3);
+  // background-color: rgb(189, 12, 12);
+  color: #b3b3b3;
+  
 
+  &::after{
+    color: rgb(252, 32, 32);
+    font-size: 12px;
+    font-weight: bolder;
+    content:"\2717";
+    display: block;
+    
+    position: relative;
+    top: -9px;
+    right: -9px;
+    height: 0px;
+    
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
   }
+
+ 
 }
 
 #reset-btn{

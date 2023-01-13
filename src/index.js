@@ -53,7 +53,7 @@ const months = [
 
 let today = new Date();
 
-import { getMonth, getYear, GetDate } from 'date-fns';
+import { getMonth, getYear, getDate } from 'date-fns';
 
 const actualMonth = months[getMonth(today)];
 const actualYear = getYear(dateFns.endOfMonth(today)) - 2000;
