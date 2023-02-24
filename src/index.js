@@ -84,12 +84,12 @@ function displayDates(end, month) {
 
           break;
         case 3:
-          cell.textContent = '1:00pm';
+          cell.textContent = '2:00pm';
           cell.setAttribute('data-value', 'c');
 
           break;
         case 4:
-          cell.textContent = '1:00pm';
+          cell.textContent = '2:00pm';
           cell.setAttribute('data-value', 'd');
 
           break;
