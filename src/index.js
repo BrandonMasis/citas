@@ -14,7 +14,7 @@ const months = [
   'dec.',
 ];
 
-const today = new Date(2023, 2, 1);
+const today = new Date(2023, 3, 1);
 
 const actualMonth = months[getMonth(today)];
 const actualYear = getYear(endOfMonth(today)) - 2000;
