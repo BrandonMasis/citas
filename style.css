@@ -51,7 +51,7 @@ table{
 }
 
 th {
-  width: 3rem;
+  width: 3.1rem;
   /* border: .3px solid rgba(248, 248, 248, 0.253);
   border-left: none; */
 
@@ -82,18 +82,18 @@ th {
   text-align: end;
 }
 
-th:hover {
+/* th:hover {
   background-color: hsl(0deg, 0%, 30%);
-}
+} */
 
 td {
   font-weight: 300;
   padding: 2px 4px;
 }
 
-td:hover {
+/* td:hover {
   background-color: rgba(38, 38, 38, 0.699);
-}
+} */
 
 .marked {
   color: #b3b3b3ec;
@@ -113,7 +113,7 @@ td:hover {
   background-color: rgb(255, 255, 255);
 }
 
-#reset-btn {
+button {
   width: fit-content;
   height: fit-content;
   padding: 0.2rem .8rem;
@@ -125,9 +125,9 @@ td:hover {
   font-family: "Yantramanav", sans-serif;
   gap: 10px;
 }
-#reset-btn i {
+button i {
   font-size: 8px;
 }
-#reset-btn:hover {
+button:hover {
   background-color: #575555;
 }/*# sourceMappingURL=style.css.map */
