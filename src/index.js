@@ -6,7 +6,7 @@ const months = [
   'feb.',
   'mar.',
   'abr.',
-  'mayo.',
+  'may.',
   'jun.',
   'jul.',
   'oct.',
