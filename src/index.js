@@ -205,4 +205,34 @@ function updateCalendar() {
   endActualMonth = newEndMonth;
 
   display();
+  saveState(); // Save the current state to localStorage
 }
+
+function saveState() {
+  const state = {
+    month: actualMonth,
+    year: actualYear,
+  };
+
+  localStorage.setItem('calendarState', JSON.stringify(state));
+}
+
+function restoreState() {
+  const savedState = localStorage.getItem('calendarState');
+
+  if (savedState) {
+    const state = JSON.parse(savedState);
+    actualMonth = state.month;
+    actualYear = state.year;
+    display(); // Display the calendar with the restored state
+  } else {
+    // Set initial state if no saved state exists
+    const todayMonth = months[getMonth(today)];
+    const todayYear = getYear(endOfMonth(today)) - 2000;
+    actualMonth = todayMonth;
+    actualYear = todayYear;
+    display(); // Display the calendar with the initial state
+  }
+}
+
+restoreState(); // Restore the state of the calendar on page load
