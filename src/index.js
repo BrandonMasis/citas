@@ -1,5 +1,6 @@
 import { getMonth, getYear, getDate, endOfMonth } from 'date-fns';
-let allAppointments = [];
+
+let allAppointments = {};
 
 const months = [
   'ene.',
@@ -15,9 +16,9 @@ const months = [
 ];
 
 const today = new Date(2023, 6, 1);
-const actualMonth = months[getMonth(today)];
-const actualYear = getYear(endOfMonth(today)) - 2000;
-const endActualMonth = getDate(endOfMonth(today));
+let actualMonth = months[getMonth(today)];
+let actualYear = getYear(endOfMonth(today)) - 2000;
+let endActualMonth = getDate(endOfMonth(today));
 
 const table = document.querySelector('#datesDisplay');
 const resetBtn = document.querySelector('#reset-btn');
@@ -76,27 +77,23 @@ function displayDates(end, month) {
         case 1:
           cell.textContent = '9:00am';
           cell.setAttribute('data-value', 'a');
-
           break;
         case 2:
           cell.textContent = '9:00am';
           cell.setAttribute('data-value', 'b');
-
           break;
         case 3:
           cell.textContent = '2:00pm';
           cell.setAttribute('data-value', 'c');
-
           break;
         case 4:
           cell.textContent = '2:00pm';
           cell.setAttribute('data-value', 'd');
-
           break;
       }
 
       if (
-        allAppointments[`${i + 1}`][`${cell.getAttribute('data-value')}`] ==
+        allAppointments[`${i + 1}`][`${cell.getAttribute('data-value')}`] ===
         true
       ) {
         cell.classList.add('marked');
@@ -125,7 +122,7 @@ function display() {
           `${e.target.getAttribute('data-value')}`
         ];
 
-      if (cellInObject == true) {
+      if (cellInObject === true) {
         allAppointments[`${e.target.parentElement.getAttribute('data-date')}`][
           `${e.target.getAttribute('data-value')}`
         ] = false;
@@ -148,14 +145,14 @@ function display() {
       let counter = 0;
 
       Object.keys(dateObj).forEach((v) => {
-        if (dateObj[v] == true) {
+        if (dateObj[v] === true) {
           counter += 1;
         } else {
           counter += 0;
         }
       });
 
-      if (counter == 4) {
+      if (counter === 4) {
         Object.keys(dateObj).forEach((v) => (dateObj[v] = false));
       } else {
         Object.keys(dateObj).forEach((v) => (dateObj[v] = true));
@@ -176,13 +173,36 @@ function reset() {
   save();
 }
 
-resetBtn.addEventListener('click', () => {
-  reset();
-});
-
-display();
+resetBtn.addEventListener('click', reset);
 
 function save() {
   localStorage.setItem('appointments', JSON.stringify(allAppointments));
+  display();
+}
+
+display();
+
+const previousMonthBtn = document.querySelector('#previous-month');
+const nextMonthBtn = document.querySelector('#next-month');
+
+previousMonthBtn.addEventListener('click', () => {
+  today.setMonth(today.getMonth() - 1);
+  updateCalendar();
+});
+
+nextMonthBtn.addEventListener('click', () => {
+  today.setMonth(today.getMonth() + 1);
+  updateCalendar();
+});
+
+function updateCalendar() {
+  const newMonth = months[getMonth(today)];
+  const newYear = getYear(endOfMonth(today)) - 2000;
+  const newEndMonth = getDate(endOfMonth(today));
+
+  actualMonth = newMonth;
+  actualYear = newYear;
+  endActualMonth = newEndMonth;
+
   display();
 }

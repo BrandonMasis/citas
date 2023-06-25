@@ -131,3 +131,9 @@ button i {
 button:hover {
   background-color: #575555;
 }/*# sourceMappingURL=style.css.map */
+
+
+.current-month {
+  color: yellow;
+  font-weight: bold;
+}
