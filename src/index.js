@@ -63,40 +63,47 @@ if (localStorage.getItem('appointments') == null) {
   allAppointments = JSON.parse(localStorage.getItem('appointments'));
 }
 
+function getMonthFromString(monthStr) {
+  return months.findIndex((month) => month === monthStr);
+}
+
+function getDisplayHours(dayOfWeek) {
+  if (dayOfWeek === 4) {
+    // Thursday
+    return ['9:00am', '9:00am', '1:00pm', '1:00pm'];
+  } else {
+    return ['9:00am', '9:00am', '2:00pm', '2:00pm'];
+  }
+}
+
 function displayDates(end, month) {
+  const table = document.querySelector('#datesDisplay');
+
   for (let i = 0; i < end; i++) {
     let row = document.createElement('tr');
     row.setAttribute('data-date', i + 1);
     row.classList.add('visible');
     let title = document.createElement('th');
-    title.textContent = `${i + 1} ${actualMonth} ${actualYear}`;
+    title.textContent = `${i + 1} ${month} ${actualYear}`;
 
     row.appendChild(title);
 
-    for (let j = 1; j <= 4; j++) {
+    const dayOfWeek = new Date(
+      actualYear + 2000,
+      getMonthFromString(month),
+      i + 1
+    ).getDay();
+    const displayHours = getDisplayHours(dayOfWeek);
+
+    for (let j = 0; j < 4; j++) {
       let cell = document.createElement('td');
-      switch (j) {
-        case 1:
-          cell.textContent = '9:00am';
-          cell.setAttribute('data-value', 'a');
-          break;
-        case 2:
-          cell.textContent = '9:00am';
-          cell.setAttribute('data-value', 'b');
-          break;
-        case 3:
-          cell.textContent = '2:00pm';
-          cell.setAttribute('data-value', 'c');
-          break;
-        case 4:
-          cell.textContent = '2:00pm';
-          cell.setAttribute('data-value', 'd');
-          break;
-      }
+      cell.textContent = displayHours[j];
+      cell.setAttribute('data-value', String.fromCharCode(97 + j));
 
       if (
+        allAppointments[`${i + 1}`] &&
         allAppointments[`${i + 1}`][`${cell.getAttribute('data-value')}`] ===
-        true
+          true
       ) {
         cell.classList.add('marked');
       } else {
@@ -108,7 +115,6 @@ function displayDates(end, month) {
     table.appendChild(row);
   }
 }
-
 function display() {
   table.innerHTML = '';
   displayDates(endActualMonth, actualMonth);
