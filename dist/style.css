@@ -46,20 +46,25 @@ tr {
   display: block;
 }
 
+/* Headers ? */
+
 th {
   font-weight: 400;
   padding: 2px 4px;
   background-color: rgba(54, 54, 54, 0.405);
   text-align: end;
-  width: 45px;
+  width: 60px;
   border-right: 1px solid rgba(255, 255, 255, 0.377);
   color: rgb(224, 224, 224);
 }
 
+/* Times */
+
 td {
   font-weight: 300;
   padding: 2px 2px;
-  width: 30px;
+  text-align: center;
+  width: 25px;
   color: rgba(255, 255, 255, 0.797);
 }
 
@@ -69,7 +74,7 @@ td {
 
 .marked::after {
   color: rgb(231, 44, 44);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bolder;
   content: "\2715";
   display: block;
@@ -110,14 +115,14 @@ button:hover {
 }
 
 #headerTable th:nth-child(1) {
-  width: 45px;
+  width: 60px;
   text-align: end;
 }
 
 #headerTable th:nth-child(2),
 #headerTable th:nth-child(3),
 #headerTable th:nth-child(4) {
-  width: 90px;
+  width: 75px;
 }
 
 td[data-value="c"],
