@@ -16,8 +16,7 @@ table {
 
 #main {
   
-  max-width: 100%;
-  height: auto;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +51,7 @@ th {
   padding: 2px 4px;
   background-color: rgba(54, 54, 54, 0.405);
   text-align: end;
-  width: 90px;
+  width: 45px;
   border-right: 1px solid rgba(255, 255, 255, 0.377);
   color: rgb(224, 224, 224);
 }
@@ -111,14 +110,14 @@ button:hover {
 }
 
 #headerTable th:nth-child(1) {
-  width: 90px;
+  width: 45px;
   text-align: end;
 }
 
 #headerTable th:nth-child(2),
 #headerTable th:nth-child(3),
 #headerTable th:nth-child(4) {
-  width: 120px;
+  width: 90px;
 }
 
 td[data-value="c"],
