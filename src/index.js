@@ -49,12 +49,12 @@ function getMonthFromString(monthStr) {
 function getDisplayHours(dayOfWeek) {
   return [
     '9 am',
-    '2 am',
+    '2 pm',
     '5 pm',
     '9 am',
     '2 pm',
     '5 pm',
-    '9 pm',
+    '9 am',
     '2 pm',
     '5 pm',
   ];
